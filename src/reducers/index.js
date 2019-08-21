@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router'
 import { loadingBarReducer } from 'react-redux-loading-bar';
 
 import { form } from './form';
@@ -14,8 +14,8 @@ import autoSuggestion from './autoSuggestion';
 import pagination from './pagination';
 import statistic from './statistic';
 
-export default combineReducers({
-	router: routerReducer,
+const createRootReducer = (history) => combineReducers({
+    router: connectRouter(history),
     form,
     authorization,
     masterTable,
@@ -29,3 +29,5 @@ export default combineReducers({
     loadingBar: loadingBarReducer,
     statistic,
 });
+
+export default createRootReducer

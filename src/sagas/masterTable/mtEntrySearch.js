@@ -1,4 +1,5 @@
-import { delay } from "redux-saga";
+import { delay } from "redux-saga/effects";
+
 import masterTableGetEntry from './masterTableGetEntry';
 import getShortStatistic from '../statistic/getShortStatistic';
 

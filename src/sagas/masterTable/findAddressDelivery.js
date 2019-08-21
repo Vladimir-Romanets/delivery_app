@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
 import actions from '../../actions';
-import { getCheckedList } from '../selectors';
+// import { getCheckedList } from '../selectors';
 
 function* findAddressDelivery({ payload }) {
     try {

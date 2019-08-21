@@ -69,9 +69,6 @@ class GenerateAdressDelivery extends PureComponent {
         const { selectedIsValid, startDate } = this.state;
         const isValid = selectedIsValid && startDate;
         const cn = `btn --save ${isValid ? '' : 'disabled'}`;
-        const input = {
-            value: startDate
-        };
 
         return (
             <div className="modal-content">

@@ -1,5 +1,5 @@
-import { put, select } from "redux-saga/effects";
-import { delay } from "redux-saga";
+import { put, select, delay } from "redux-saga/effects";
+
 import { instance } from '../axios';
 import { getPageLimit } from '../selectors';
 import actions from '../../actions';
