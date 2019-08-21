@@ -1,0 +1,75 @@
+
+.master-table .search{
+    padding: 0;
+    display: table-row;
+    background: none;
+    width: 100%;
+    min-width: 992px;
+	overflow: hidden;
+	background: #ececec;
+}
+.master-table .search input{
+	margin: 3px 0 0 0;
+	padding: 10px 10px 7px 10px;
+	box-shadow: none;
+}
+.master-table .search input:focus {
+	border-color: #f0f0f0;
+	box-shadow: inset 2px 2px 3px rgba(0,0,0,.25);
+}
+.master-table .search .table__cell.childs-2{
+	width: 19%;
+}
+.master-table .search .table__cell {
+    padding: 5px 3px;
+    text-align: left;
+	font-family: "Roboto Light", serif;
+	vertical-align: middle
+}
+.master-table .form.search input,
+.master-table .search select{
+	margin: 0;
+	background: #dadadc;
+	width: 100%;
+	border: none;
+}
+.master-table .search ::-webkit-input-placeholder{
+	color: #363636;
+}
+.master-table .search ::-moz-placeholder{
+	color: #363636;
+}
+.master-table .search :-ms-input-placeholder{
+	color: #363636;
+}
+.master-table .search :-moz-placeholder{
+	color: #363636;
+}
+.svgContent{
+	margin: 0 auto;
+	padding: 5px;
+	border: 1px solid #000;
+	border-radius: 50%;
+	font-size: 0;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	overflow: hidden;
+	cursor: pointer;
+	background: #fff;
+}
+.svgContent[disabled]{
+	cursor: default;
+	opacity: .4;
+}
+.search svg {
+	width: 15px;
+}
+.search .table__cell label{
+	width: 50%;
+	max-width: 120px;
+    display: inline-block;
+    white-space: nowrap;
+    text-align: left;
+    overflow: hidden;
+}

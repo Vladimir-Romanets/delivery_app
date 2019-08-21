@@ -1,0 +1,106 @@
+.header{
+	background: #e7e7e7 -webkit-linear-gradient(bottom, #dbdbdb, #f1f1f1);
+	background: #e7e7e7 -o-linear-gradient(bottom, #dbdbdb, #f1f1f1);
+	background: #e7e7e7 linear-gradient(to top, #dbdbdb, #f1f1f1);
+	color: #69686b;
+	box-shadow: 0 2px 2px rgba(0,0,0,.33);
+	text-align: right;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 992px;
+	z-index: 5000;
+    display: flex;
+    justify-content: space-between;
+}
+.login{
+    margin: 1px 0 1px 1px;
+    font-family: 'Roboto Medium';
+    border-radius: 50%;
+    border: 1px solid;
+    line-height: 44px;
+	width: 46px;
+	height: 46px;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    cursor: pointer;
+}
+.menu{
+	margin: 0;
+}
+.menu__item{
+	margin: 0 -1px -1px 0;
+	display: inline-block;
+}
+.menu__item:last-child{
+	margin-right: 0;
+}
+.menu__item a{
+	padding: 15px 25px;
+	display: block;
+	position: relative;
+	background: #e7e7e7 -webkit-linear-gradient(bottom, #dbdbdb, #f1f1f1);
+	background: #e7e7e7 -o-linear-gradient(bottom, #dbdbdb, #f1f1f1);
+	background: #e7e7e7 linear-gradient(to top, #dbdbdb, #f1f1f1);
+	cursor: pointer;
+	border: 1px solid #8d8d8d;
+	border-top: none;
+}
+.menu__item a:hover,
+.menu__item .selected{
+	background: #cdcdd1 -webkit-linear-gradient(bottom, #cecece, #e0e0e0);
+	background: #cdcdd1 -o-linear-gradient(bottom, #cecece, #e0e0e0);
+	background: #cdcdd1 linear-gradient(to top, #cecece, #e0e0e0);
+}
+
+.rollDownMenu{
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	overflow: hidden;
+	height: auto;
+	max-height: 0;
+	transition: max-height .3s ease-in;
+	font-family: 'Roboto Light', serif;
+	font-size: .8rem;
+}
+.login:hover .rollDownMenu{
+	max-height: 150px;
+}
+.rollDownMenu .menu__item {
+	margin: 0 0 -1px;
+	display: block;
+}
+.rollDownMenu .menu__item a{
+	padding: 0 10px;
+	line-height: 2rem;
+	white-space: nowrap;
+	border: 1px solid #8d8d8d;
+}
+a.selected:after {
+	content: '';
+	display: block;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	bottom: -4px;
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+	background: #cecece;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.33);
+	z-index: 10;
+}
+
+.loading{
+	background-color: #d9504a;
+	height: 2px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	z-index: 6000;
+}

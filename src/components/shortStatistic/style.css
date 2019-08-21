@@ -1,0 +1,27 @@
+.short-statistic{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+.short-statistic__item{
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.short-statistic__item .description{
+    font-size: .7rem;
+}
+.short-statistic__item .result{
+    text-align: center;
+    border-bottom: 1px solid #8d8d8d;
+}
+
+.short-statistic .ico{
+    margin: auto;
+    width: 27px;
+}
+.short-statistic .ico + *{
+    padding: 0 0 0 5px;
+}

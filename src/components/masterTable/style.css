@@ -1,0 +1,73 @@
+.master-table .assets{
+	margin: 0 auto 10px;
+	padding: 0 0 10px;
+	position: relative;
+	font-size: 0;
+}
+.assets__item{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+}
+.assets__item + .assets__item{
+	margin-left: 15px;
+}
+.assets__item img,
+.assets__item svg{
+	width: 20px;
+	fill: #363636;
+	cursor: pointer;
+	transition: all .25s linear;
+}
+[data-add-show="true"] #ico__add{
+	fill: #557cb6;
+}
+
+.master-table #services{
+	cursor: pointer;
+}
+.master-table .table{
+	min-width: 992px;
+}
+.master-table .income-stat--1 .--income,
+.master-table .expense-stat--1 .--expense{
+	background: #fdffa4
+}
+.master-table .income-stat--2 .--income,
+.master-table .expense-stat--2 .--expense{
+	background: #ffdf00
+}
+.master-table .income-stat--3 .--income,
+.master-table .expense-stat--3 .--expense{
+	background: #f00
+}
+
+.search .react-datepicker-wrapper input{
+	font-size: 11px!important;
+}
+.react-datepicker-popper select,
+.react-datepicker-popper input,
+.react-datepicker-wrapper select,
+.react-datepicker-wrapper input{
+	width: 100%!important;
+}
+.react-datepicker__close-icon::after{
+	right: 3px!important
+}
+
+.table__header .table__cell.desc:after,
+.table__header .table__cell.asc:after{
+	display: block;
+	position: absolute;
+	z-index: 1;
+	top: 2px;
+	right: 2px;
+	font-size: 16px;
+}
+.table__header .table__cell.desc:after{
+	content: '\21E7';
+}
+
+.table__header .table__cell.asc:after{
+	content: '\21E9';
+}

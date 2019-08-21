@@ -1,0 +1,2 @@
+export const PAGI_GET_SUCCESS = 'PAGI_GET_SUCCESS';
+export const PAGI_RESET = 'PAGI_RESET';

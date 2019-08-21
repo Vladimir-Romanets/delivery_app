@@ -1,0 +1,6 @@
+.clients .table{
+	min-width: 920px;
+}
+.clients .table__cell:nth-child(3){
+	width: 100px;
+}

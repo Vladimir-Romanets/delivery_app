@@ -1,0 +1,238 @@
+.addressees,
+.clients,
+.couriers,
+.master-table{
+	position: relative;
+}
+.table{
+	margin: 0 auto;
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #3b3b3b
+}
+.table__header{
+	text-align: center;
+	font-family: 'Roboto Medium';
+	font-size: .8rem;
+	color: #fff;
+	border: 1px solid #3b3b3b;
+}
+.table__header .table__cell{
+	padding: 10px 5px;
+	background: #557cb6 -webkit-linear-gradient(bottom, #557cb6, #6d93c6);
+	background: #557cb6 -o-linear-gradient(bottom, #557cb6, #6d93c6);
+	background: #557cb6 linear-gradient(to top, #557cb6, #6d93c6);
+	border: 1px solid #3b3b3b;
+	vertical-align: middle;
+	height: 51px;
+	position: relative;
+}
+.table__body{
+	display: table-row-group;
+}
+.colgroup{
+	position: absolute;
+	width: 100%;
+	border: 1px solid #3b3b3b;
+	background: #ececec;
+	left: 0;
+}
+.table__row{
+	display: table-row;
+	position: relative;
+	background: #fafafa;
+}
+.table__body .table__row:nth-child(even){
+	background: #ececec;
+}
+.table__cell{
+	margin: 0 -1px -1px 0;
+	padding: 10px 5px;
+	border: 1px solid #cdcdcd;
+	overflow: hidden;
+	font-size: .8rem;
+	display: table-cell;
+	vertical-align: top;
+	border-bottom: none;
+}
+.table__cell:last-child{
+	border-right: none;
+	vertical-align: middle;
+}
+.table__cell:first-child{
+	width: 50px;
+	text-align: center;
+	border-left: none;
+	font-family: "Roboto Medium";
+}
+.form{
+	padding: 0;
+	max-width: 100%;
+}
+.table__cell.--dateRecive,
+.table__cell.--dateSend{
+	text-align: center;
+}
+.table__cell.childs-2{
+	display: flex;
+	justify-content: space-between;
+}
+.table__cell.childs-2 label{
+	width: 49%;
+}
+
+.form .table__cell:first-child{
+	text-align: center;
+	font-size: 0;
+	vertical-align: middle;
+}
+.form input:not([type="radio"]),
+.master-table select,
+.master-table textarea,
+#root-modal input{
+	padding: 7px 5px 5px 5px;
+	width: 100%;
+	background: transparent;
+	border-radius: 5px;
+	border: 1px solid #ececec;
+	box-shadow: inset 2px 2px 3px rgba(0,0,0,.25);
+	transition: border-color .25s linear;
+}
+.master-table select{
+	width: auto;
+	background: #dadadc;
+}
+.master-table .assets select{
+	border-color: #cacaca;
+}
+.form ::-webkit-input-placeholder{
+	color: transparent;
+}
+.form ::-moz-placeholder{
+	color: transparent;
+}
+.form :-ms-input-placeholder{
+	color: transparent;
+}
+.form :-moz-placeholder{
+	color: transparent;
+}
+.ico__add{
+	display: inline-block;
+	width: 22px;
+	cursor: pointer;
+}
+.ico__add svg{
+	fill: #557cb6;
+}
+.edit-block{
+	padding: 30px 15px;
+	position: absolute;
+	top: 52px;
+	left: 0;
+	z-index: 9;
+	width: 100%;
+	height: auto;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border: 1px solid #c1c1c1;
+	background: #f0f0f0;
+	overflow: hidden;
+	z-index: 10;
+}
+.edit-block .form{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.edit-block .form .table__cell{
+	padding: 0;
+	margin: 0 0 20px;
+	width: 48.5%;
+	border: none;
+}
+.edit-block input,
+.addEntity .form input,
+.addEntity .form select,
+.addEntity .form textarea,
+#root-modal input{
+	padding: 10px 10px 7px 10px;
+	background: #dadadc;
+	border: 2px solid transparent;
+	box-shadow: none;
+}
+.addEntity .form .react-datepicker-wrapper input{
+	padding-left: 5px;
+}
+.edit-block input:focus{
+	border-color: #f0f0f0;
+	box-shadow: inset 2px 2px 3px rgba(0,0,0,.25);
+}
+.addEntity .form input:focus,
+.addEntity .form select:focus,
+.addEntity .form textarea:focus,
+#root-modal input:focus{
+	border-color: #fff;
+	box-shadow: inset 2px 2px 3px rgba(0,0,0,.25);
+}
+.addEntity .form input[type="radio"]{
+	background: none!important;
+	box-shadow: none!important;
+}
+.edit-block ::-webkit-input-placeholder{
+	color: #000;
+}
+.edit-block ::-moz-placeholder{
+	color: #000;
+}
+.edit-block :-ms-input-placeholder{
+	color: #000;
+}
+.edit-block :-moz-placeholder{
+	color: #000;
+}
+.mng__btn{
+	padding: 10px 0 0;
+	text-align: center;
+	flex-basis: 100%;
+}
+.--save{
+	border-color: #8fc22d;
+	background: #8fc22d;
+	color: #fff;
+}
+.--delete{
+	border-color: #d9504a;
+	background: #d9504a;
+	color: #fff;
+}
+.--save:hover,
+.--delete:hover,
+.--cancel:hover{
+	box-shadow: inset 0 0 8px rgba(0,0,0,.25);
+	border-color: #f0f0f0;
+}
+.--cancel{
+	border-color: #777;
+	color: #777;
+}
+.form .--warning{
+	border: 2px solid #df5751!important;
+}
+
+.btn.disabled,
+.btn.disabled:hover,
+.mng__btn [disabled],
+.mng__btn [disabled]:hover{
+	background-color: #dadadc;
+	color: #f0f0f0;
+	box-shadow: none;
+	border-color: inherit;
+}
+
+@media screen and (min-width: 992px){
+	.edit-block{
+		padding: 30px 40px;
+	}
+}

@@ -1,0 +1,13 @@
+.text-area-container{
+    align-items: flex-start!important
+}
+.text-area-container.flex-block label{
+    margin-right: 2px;
+    line-height: 37px
+}
+
+.text-area {
+    width: 100%;
+    height: 86px;
+    resize: none
+}

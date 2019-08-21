@@ -1,0 +1,87 @@
+@font-face {
+	font-family: "Roboto Light";
+	src: url("../fonts/Roboto-Light.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Roboto Medium";
+	src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+*{
+	box-sizing: border-box;
+}
+html,
+body{
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto Light', 'sans-serif';
+	background: #cacaca;
+	color: #363636;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+input,
+textarea,
+select,
+button{
+	outline: none;
+	font-family: 'Roboto Light';
+	line-height: 1rem;
+	border-width: 1px;
+	font-size: 14px;
+}
+input,
+textarea,
+button{
+	-webkit-appearance: none;
+	appearance: none;
+}
+input[type='checkbox']{
+	-webkit-appearance: checkbox;
+	appearance: checkbox;
+	width: auto!important;
+}
+input[type='radio']{
+	-webkit-appearance: radio;
+	appearance: radio;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+.container{
+	padding: 70px 10px 10px;
+	min-height: 100vh;
+	min-width: 100%;
+	position: relative;
+}
+/*.content{
+	min-width: 745px;
+	height: calc(100vh - 70px);
+	overflow: auto;
+}*/
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+.btn{
+	padding: 10px 15px;
+	display: inline-block;
+	border-radius: 10px;
+	border: 1px solid #aaaaad;
+	background: linear-gradient(to top, #dbdbdd, #ececee);
+	font-size: 14px;
+	font-family: 'Roboto Medium';
+	transition: all .25s linear;
+	cursor: pointer;
+}
+.btn + .btn{
+	margin-left: 20px;
+}

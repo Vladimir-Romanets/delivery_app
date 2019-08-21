@@ -1,0 +1,99 @@
+.auth-form{
+	padding: 0 0 30px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #f0f0f0;
+	border-radius: 10px;
+	border: 1px solid #c1c1c1;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.33);
+	font-size: 0;
+	overflow: hidden;
+}
+.auth-form__header{
+	margin: 0 0 35px;
+	text-align: center;
+	font-family: 'Roboto Medium';
+	font-size: 18px;
+	line-height: 58px;
+	border-bottom: 1px solid #c0c0c2;
+	background: -webkit-linear-gradient(bottom, #dbdbdd, #ececee);
+	background: -o-linear-gradient(bottom, #dbdbdd, #ececee);
+	background: linear-gradient(to top, #dbdbdd, #ececee);
+}
+.auth-form__row{
+	margin: 0 0 25px;
+	padding: 0 30px;
+	position: relative;
+	text-align: center;
+}
+.auth-form__row:last-child{
+	margin: 0;
+}
+.auth-form__row input,
+.auth-form__row label{
+	font-size: 1rem;
+}
+.auth-form__row label{
+	position: absolute;
+	top: 14px;
+	left: 49px;
+	z-index: 2;
+	transition: all .2s linear;
+}
+.auth-form__row input{
+	padding: 10px 15px;
+	width: 210px;
+	border: 3px solid #f0f0f0;
+	border-radius: 10px;
+	text-align: left;
+	position: relative;
+	z-index: 1;
+	background: #dadadc;
+	box-shadow: inset 2px 2px 4px rgba(0,0,0,.33);
+}
+.auth-form .auth-form__row:last-child{
+	-webkit-animation: none;
+	animation: none;
+}
+.wrong-auth .auth-form__row input{
+	border-color: #df5751;
+	-webkit-animation: moveL .5s 1;
+	animation: moveL .35s 1;
+}
+.auth-form__row input:focus + label,
+.auth-form__row input:not(:invalid) + label{
+	top: -15px;
+	left: 35px;
+	font-size: .7rem;
+}
+
+@-webkit-keyframes moveL {
+	0%   {left: 0px}
+	20%  {left: -10px}
+	60%  {left: 10px}
+	90%  {left: -5px}
+	100% {left: 0px}
+}
+@keyframes moveL {
+	0%   {left: 0px}
+	20%  {left: -10px}
+	60%  {left: 10px}
+	90%  {left: -5px}
+	100% {left: 0px}
+}
+@-webkit-keyframes moveR {
+	0%   {left: 0px}
+	20%  {left: 10px}
+	60%  {left: -10px}
+	90%  {left: 5px}
+	100% {left: 0px}
+}
+@keyframes moveR {
+	0%   {left: 0px}
+	20%  {left: 10px}
+	60%  {left: -10px}
+	90%  {left: 5px}
+	100% {left: 0px}
+}
