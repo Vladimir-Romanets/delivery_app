@@ -1,7 +1,7 @@
 import { put, select } from 'redux-saga/effects';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 import { getCheckedList } from '../selectors';
 
 function* getRouteSheetFile() {

@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 import { getPageLimit, getCurrentPageNumber } from '../selectors';
 
 function* couriersGet({ payload = {} }){

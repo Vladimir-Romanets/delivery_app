@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Pagination from "react-js-pagination";
 
-import actions from '../../actions';
+import * as actions from '../../actions';
 import './style.css';
 
 const { pagiReset } = actions;

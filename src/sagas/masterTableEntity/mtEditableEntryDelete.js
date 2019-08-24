@@ -2,7 +2,7 @@ import { put, all } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 
 function* mtEditableEntryDelete({payload}){
 

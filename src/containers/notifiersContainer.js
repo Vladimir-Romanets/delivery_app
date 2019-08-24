@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import actions from '../actions';
+import * as actions from '../actions';
 import { Notifiers } from '../components';
 
 class NotifiersContainer extends Component{

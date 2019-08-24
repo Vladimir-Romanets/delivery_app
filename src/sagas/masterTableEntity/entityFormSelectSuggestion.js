@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 import { autoSugestionRouteFormatter } from '../../utils/autoSugestionRouteFormatter';
 
 function* entityFormSelectSuggestion({ payload }){
