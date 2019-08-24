@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { entityFormAddSuggestion, mtModalInfoSet, notifierSetError } from '../../actions';
 import { autoSugestionRouteFormatter } from '../../utils/autoSugestionRouteFormatter';
 
 function* entityFormSelectSuggestion({ payload }){
@@ -30,13 +30,13 @@ function* entityFormSelectSuggestion({ payload }){
 		const suggestion = data[0];
 
 		if (forForm) {
-			yield put( actions.entityFormAddSuggestion({suggestion, entity}) );
+			yield put( entityFormAddSuggestion({suggestion, entity}) );
 		} else {
-			yield put(actions.mtModalInfoSet({ suggestion, entity }) );
-			// yield put(actions.mtModalInfoSet(response) );
+			yield put(mtModalInfoSet({ suggestion, entity }) );
+			// yield put(mtModalInfoSet(response) );
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	};
 };
 

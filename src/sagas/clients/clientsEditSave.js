@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { clientsEditSuccess, notifierSetSuccess, clientsEditReset, notifierSetError } from '../../actions';
 
 function* clientsEditSave({ data }){
 	try {
@@ -16,14 +16,14 @@ function* clientsEditSave({ data }){
 		} = yield instance('editClient', data);
 		
 		if ( status ){
-			yield put( actions.clientsEditSuccess(data) );
-			yield put( actions.notifierSetSuccess({ message: 'Изменения успешно сохранены' }) );
-			yield put( actions.clientsEditReset() );
+			yield put( clientsEditSuccess(data) );
+			yield put( notifierSetSuccess({ message: 'Изменения успешно сохранены' }) );
+			yield put( clientsEditReset() );
 		} else {
 			throw new Error( message || 'Ошибка изменения записи' )
 		};
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

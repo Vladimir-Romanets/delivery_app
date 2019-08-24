@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+
+import { notifierDelete }from '../actions';
 import { Notifiers } from '../components';
 
-class NotifiersContainer extends Component{
-	render(){
-		const hasNote = this.props.list.length;
-		return hasNote ? <Notifiers { ...this.props } /> : null;
-	}
-};
+const NotifiersContainer = (props) => {
+	const hasNote = props.list && props.list.length;
+	return hasNote ? <Notifiers { ...props } /> : null;
+}
 
-const mapStateToProps = state => ({
-	...state.notifiers
+const mapStateToProps = ({ notifiers }) => ({
+	...notifiers
 });
 
 const mapDispatchToProps = {
-	notifierDelete: actions.notifierDelete
+	notifierDelete
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotifiersContainer);

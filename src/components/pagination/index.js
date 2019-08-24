@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Pagination from "react-js-pagination";
 
-import * as actions from '../../actions';
+import { pagiReset } from '../../actions';
 import './style.css';
 
-const { pagiReset } = actions;
 const options = [10, 50, 100, 200].map(el => (
 	<option
-		key={el.toString()} 
+		key={String(el)} 
 		value={el}>{el}
 	</option>
 ));

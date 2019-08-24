@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Couriers } from '../components';
-
-const {
+import {
 	couriersGet,
 	couriersAdd,
 	couriersSearch,
@@ -12,7 +9,8 @@ const {
 	couriersEditReset,
 	couriersDelete,
 	couriersReset
-} = actions;
+} from '../actions';
+import { Couriers } from '../components';
 
 class CouriersContainer extends Component{
 	componentDidMount(){

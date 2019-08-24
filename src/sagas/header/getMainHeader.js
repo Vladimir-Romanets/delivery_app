@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects';
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { getMainHeaderSuccess, notifierSetError } from '../../actions';
 
 function* getMainHeader(){
 	try {
@@ -15,13 +15,13 @@ function* getMainHeader(){
 				{name: 'add-user', description: 'Добавить пользователя'},
 				{name: 'logout', description: 'Выход'}
 			];
-			yield put( actions.getMainHeaderSuccess(data) );
+			yield put( getMainHeaderSuccess(data) );
 		} else {
 			const { data } = yield instance('getMenu');
-			yield put( actions.getMainHeaderSuccess(data) );
+			yield put( getMainHeaderSuccess(data) );
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	};
 };
 

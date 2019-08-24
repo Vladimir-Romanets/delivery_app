@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects';
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { notifierSetError, } from '../../actions';
 
 function* logout(){
 	if (process.env.NODE_ENV !== "production") {
@@ -11,7 +11,7 @@ function* logout(){
 			sessionStorage.clear();
 		} catch (e) {
 			sessionStorage.clear();
-			yield put( actions.notifierSetError({ message: e.message }) );
+			yield put( notifierSetError({ message: e.message }) );
 		};
 	}
 };

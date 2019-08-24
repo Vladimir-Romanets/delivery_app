@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import get from 'lodash/get';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { mtEditableEntryResponse, notifierSetError } from '../../actions';
 
 function* mtFetchEntryID({ payload }){
 	try {
@@ -80,7 +80,7 @@ function* mtFetchEntryID({ payload }){
 					phone: "Адресат_Телефон"
 				}
 			};
-			yield put( actions.mtEditableEntryResponse(list) );
+			yield put( mtEditableEntryResponse(list) );
 		} else {
 			yield put( showLoading() );
 
@@ -116,13 +116,13 @@ function* mtFetchEntryID({ payload }){
 						storageType: type.toString()
 					}
 				}
-				yield put( actions.mtEditableEntryResponse(list) );
+				yield put( mtEditableEntryResponse(list) );
 			} else {
 				throw Error(message || 'Ошибка получения записи');
 			}
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

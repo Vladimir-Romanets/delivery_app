@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { getMainHeader, logout, getShortStatistic } from '../actions';
 import { Header } from '../components';
-
-const { getMainHeader, logout, getShortStatistic } = actions;
 
 class HeaderContainer extends Component {
 	componentDidMount(){

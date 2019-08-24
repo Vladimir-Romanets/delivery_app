@@ -3,20 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { MasterTable } from '../components';
 
-const {
-	getMasterTableHeader,
-	masterTableGetEntry,
-	mtFetchEntryID,
-	mtEditableEntryClose,
-	mtEntrySearch,
-	masterTableReset,
-	mtEditableEntrySave,
-	mtEditableEntryDelete,
-	mtSelectItem,
-	mtSelectAllItem,
-	mtChangeService,
-} = actions;
-
 class MasterTableContainer extends Component {
 	componentDidMount(){
 		const { tableHeader } = this.props;
@@ -39,17 +25,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	getMasterTableHeader,
-	masterTableGetEntry,
-	mtFetchEntryID,
-	mtEntrySearch,
-	masterTableReset,
-	mtEditableEntryClose,
-	mtEditableEntrySave,
-	mtEditableEntryDelete,
-	mtSelectItem,
-	mtSelectAllItem,
-	mtChangeService,
+	getMasterTableHeader: actions.getMasterTableHeader,
+	masterTableGetEntry: actions.masterTableGetEntry,
+	mtFetchEntryID: actions.mtFetchEntryID,
+	mtEntrySearch: actions.mtEntrySearch,
+	masterTableReset: actions.masterTableReset,
+	mtEditableEntryClose: actions.mtEditableEntryClose,
+	mtEditableEntrySave: actions.mtEditableEntrySave,
+	mtEditableEntryDelete: actions.mtEditableEntryDelete,
+	mtSelectItem: actions.mtSelectItem,
+	mtSelectAllItem: actions.mtSelectAllItem,
+	mtChangeService: actions.mtChangeService,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MasterTableContainer);

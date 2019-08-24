@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { clientsGet, clientsEditReset, notifierSetSuccess, notifierSetError } from '../../actions';
 
 function* clientsDelete({ id }){
 
@@ -15,15 +15,15 @@ function* clientsDelete({ id }){
 		const { data } = yield instance( 'deleteClient', { id } );
 
 		if ( data.status ){
-			yield put( actions.clientsGet() );
-			yield put( actions.clientsEditReset() );
-			yield put( actions.notifierSetSuccess({ message: 'Клиент успешно удален' }) );
+			yield put( clientsGet() );
+			yield put( clientsEditReset() );
+			yield put( notifierSetSuccess({ message: 'Клиент успешно удален' }) );
 		} else {
 			throw new Error(data.message || '')
 		};
 
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

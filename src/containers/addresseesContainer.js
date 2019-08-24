@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Addressees } from '../components';
-
-const {
+import {
 	addresseesGet,
 	addresseesAdd,
 	addresseesSearch,
@@ -12,7 +9,8 @@ const {
 	addresseesDelete,
 	addresseesEditReset,
 	addresseesReset
-} = actions;
+} from '../actions';
+import { Addressees } from '../components';
 
 class AddresseesContainer extends Component{
 

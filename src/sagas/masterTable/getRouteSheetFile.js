@@ -1,7 +1,7 @@
 import { put, select } from 'redux-saga/effects';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { notifierSetError} from '../../actions';
 import { getCheckedList } from '../selectors';
 
 function* getRouteSheetFile() {
@@ -17,7 +17,7 @@ function* getRouteSheetFile() {
         window.open(fullUrl, 'report')
 
     } catch (e) {
-        yield put(actions.notifierSetError({ message: e.message }));
+        yield put(notifierSetError({ message: e.message }));
     };
 };
 

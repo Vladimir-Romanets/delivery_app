@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { groupPaymentChangeSuccess, notifierSetSuccess, notifierSetError } from '../../actions';
 import { getCheckedList } from '../selectors';
 
 function* groupPaymentChange({ payload }){
@@ -21,13 +21,13 @@ function* groupPaymentChange({ payload }){
 		const response = yield instance('replacePaymentInDelivery', data);
 
 		if (response.data.rezoult){
-			yield put(actions.groupPaymentChangeSuccess({ payment : data.payment }));
-			yield put(actions.notifierSetSuccess({ message: 'Сохранено успешно' }))
+			yield put(groupPaymentChangeSuccess({ payment : data.payment }));
+			yield put(notifierSetSuccess({ message: 'Сохранено успешно' }))
 		} else {
 			throw new Error(data.message || 'Ошибка сохранения') 
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put(hideLoading());
 	};

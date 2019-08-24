@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { groupDateChangeSuccess, mtModalInfoClear, notifierSetSuccess, notifierSetError } from '../../actions';
 import { getCheckedList } from '../selectors';
 
 function* groupDateChange({ payload }) {
@@ -20,12 +20,12 @@ function* groupDateChange({ payload }) {
             if (rezoult[key]) changedList.push(key);
         }
 
-        yield put(actions.groupDateChangeSuccess({ changedList, dateRecive: payload.date }));
-        yield put(actions.mtModalInfoClear({ entity: 'sendDate' }));
-        yield put(actions.notifierSetSuccess({ message: 'Сохранено успешно' }));
+        yield put(groupDateChangeSuccess({ changedList, dateRecive: payload.date }));
+        yield put(mtModalInfoClear({ entity: 'sendDate' }));
+        yield put(notifierSetSuccess({ message: 'Сохранено успешно' }));
 
     } catch (e) {
-        yield put(actions.notifierSetError({ message: e.message }));
+        yield put(notifierSetError({ message: e.message }));
     } finally {
         yield put(hideLoading());
     };

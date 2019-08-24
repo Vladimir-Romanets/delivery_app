@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { addresseesGet, notifierSetSuccess, addresseesEditReset, notifierSetError }from '../../actions';
 
 function* addresseesDelete({ id }) {
 
@@ -15,14 +15,14 @@ function* addresseesDelete({ id }) {
 		const { data } = yield instance( 'deleteContact', { id } );
 
 		if ( data.status ){
-			yield put( actions.addresseesGet() );
-			yield put( actions.notifierSetSuccess({ message: 'Адресат успешно удален' }) );
-			yield put( actions.addresseesEditReset() );
+			yield put( addresseesGet() );
+			yield put( notifierSetSuccess({ message: 'Адресат успешно удален' }) );
+			yield put( addresseesEditReset() );
 		} else {
 			throw new Error(data.message || '')
 		};
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

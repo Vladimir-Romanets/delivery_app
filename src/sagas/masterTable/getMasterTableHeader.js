@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects';
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { setMasterTableHeader, MTServicesGetSuccess, notifierSetError} from '../../actions';
 
 function* getMasterTableHeader(){
 	try {
@@ -40,8 +40,8 @@ function* getMasterTableHeader(){
 				{ id: 7, service_type_name: 'Расходы' },
 				{ id: 0, service_type_name: 'Все услуги' },
 			];
-			yield put( actions.setMasterTableHeader(theader) );
-			yield put( actions.MTServicesGetSuccess(services) );
+			yield put( setMasterTableHeader(theader) );
+			yield put( MTServicesGetSuccess(services) );
 		} else {
 			const {
 				data: { list: theader }
@@ -51,11 +51,11 @@ function* getMasterTableHeader(){
 				data: { list: services }
 			} = yield instance('getServiceTypes'); //Request to get services
 
-			yield put( actions.setMasterTableHeader(theader) );
-			yield put( actions.MTServicesGetSuccess(services) );
+			yield put( setMasterTableHeader(theader) );
+			yield put( MTServicesGetSuccess(services) );
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	};
 };
 

@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { suggestionResponse, notifierSetError } from '../../actions';
 import { autoSugestionRouteFormatter } from '../../utils/autoSugestionRouteFormatter';
 
 // const response = {
@@ -44,10 +44,10 @@ function* findSuggestion({ payload }){
 	try {
 		const { data: { list } } = yield instance(routType, dataForSearch);
 		const suggestions = list.slice(0, 7);
-		yield put( actions.suggestionResponse({suggestions, entity}) );
-		// yield put(actions.suggestionResponse(response) );
+		yield put( suggestionResponse({suggestions, entity}) );
+		// yield put(suggestionResponse(response) );
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	};
 };
 

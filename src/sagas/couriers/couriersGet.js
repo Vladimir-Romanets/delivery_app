@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { couriersGetSuccess, pagiGetSuccess, notifierSetError} from '../../actions';
 import { getPageLimit, getCurrentPageNumber } from '../selectors';
 
 function* couriersGet({ payload = {} }){
@@ -39,9 +39,9 @@ function* couriersGet({ payload = {} }){
 		const { data } = yield instance('getCouriers', {...payload});
 
 		if (data.status) {
-			yield put( actions.couriersGetSuccess(data.list) );
+			yield put( couriersGetSuccess(data.list) );
 			yield put(
-				actions.pagiGetSuccess({
+				pagiGetSuccess({
 					pageCount: data.other_count,
 					currentPage: data.page,
 					limit: payload.limit,
@@ -52,7 +52,7 @@ function* couriersGet({ payload = {} }){
 		};
 		
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

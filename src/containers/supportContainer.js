@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { sendSupport } from '../actions';
 import { SupportBlock } from '../components';
 
 class SupportContainer extends Component {
@@ -17,10 +17,8 @@ const mapStateToProps = ( state ) => {
 	return state
 };
 
-const mapDispatchToProps = ( dispatch ) => {
-	return {
-		sendSupport: (data) => dispatch( actions.sendSupport(data) )
-	};
-};
+const mapDispatchToProps = ({
+	sendSupport
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SupportContainer);

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { Clients } from '../components';
-
-const {
+import {
 	clientsGet,
 	clientsAdd,
 	clientsSearch,
@@ -12,7 +9,8 @@ const {
 	clientsEditSave,
 	clientsDelete,
 	clientsReset
-} = actions;
+} from '../actions';
+import { Clients } from '../components';
 
 class ClientsContainer extends Component{
 	componentDidMount(){

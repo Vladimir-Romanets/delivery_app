@@ -2,7 +2,7 @@ import { put, all } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { masterTableGetEntry, mtEditableEntryClose, notifierSetSuccess, notifierSetError } from '../../actions';
 
 function* mtEditableEntryDelete({payload}){
 
@@ -15,17 +15,17 @@ function* mtEditableEntryDelete({payload}){
 		const { data } = yield instance( 'deleteOtherDelivery', {id: payload.id} );
 
 		if ( data.status ){
-			yield put( actions.masterTableGetEntry({service_id: payload.service}) );
+			yield put( masterTableGetEntry({service_id: payload.service}) );
 			yield all([
-				// put(actions.getShortStatistic()),	// обновляем статистику
-				put( actions.mtEditableEntryClose() ),
-				put( actions.notifierSetSuccess({ message: 'Запись успешно удалена' }) ),
+				// put(getShortStatistic()),	// обновляем статистику
+				put( mtEditableEntryClose() ),
+				put( notifierSetSuccess({ message: 'Запись успешно удалена' }) ),
 			]);
 		} else {
 			throw Error(data.message || 'Ошибка удаления записи');
 		};
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

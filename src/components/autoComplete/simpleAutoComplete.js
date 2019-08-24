@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Autosuggest from 'react-autosuggest';
 
-import * as actions from '../../actions';
-import { SuggestionsList, getSuggestionValue } from './SuggestionsHelper';
-import './style.css';
-
-const {
+import {
     suggestionRequest,
     suggestionReset,
     entityFormAddValToHiddenField,
     entityFormSelectSuggestion
-} = actions;
-
+} from '../../actions';
+import { SuggestionsList, getSuggestionValue } from './SuggestionsHelper';
+import './style.css';
 
 class SimpleAutoComplete extends Component {
     constructor(props) {

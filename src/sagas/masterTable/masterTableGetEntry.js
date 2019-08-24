@@ -2,7 +2,7 @@ import { put, all, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { masterTableGetEntrySuccess, getShortStatistic, pagiGetSuccess, notifierSetError} from '../../actions';
 import { getPageLimit, getCurrentPageNumber, searchForm } from '../selectors';
 
 const exeptionsFields = {
@@ -107,16 +107,16 @@ function* masterTableGetEntry({ payload }){
 
 	try {
 		if (process.env.NODE_ENV === "development" ){
-			yield put( actions.masterTableGetEntrySuccess(list) );
+			yield put( masterTableGetEntrySuccess(list) );
 		} else {
 			yield put( showLoading() );
 
 			const { data } = yield instance('getOtherDelivery', {...payload});
 			
-			yield put( actions.masterTableGetEntrySuccess(data.list) );
+			yield put( masterTableGetEntrySuccess(data.list) );
 			yield all([
-				put(actions.getShortStatistic()),	// обновляем статистику
-				put(actions.pagiGetSuccess({
+				put(getShortStatistic()),	// обновляем статистику
+				put(pagiGetSuccess({
 					pageCount: data.other_count,
 					currentPage: data.page,
 					limit: payload.limit,
@@ -124,7 +124,7 @@ function* masterTableGetEntry({ payload }){
 			])
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

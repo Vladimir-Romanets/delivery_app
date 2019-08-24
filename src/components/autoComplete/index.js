@@ -3,17 +3,14 @@ import { connect } from 'react-redux';
 import Autosuggest from 'react-autosuggest';
 import get from 'lodash/get';
 
-import * as actions from '../../actions';
-import { SuggestionsList, getSuggestionValue } from './SuggestionsHelper';
-import './style.css';
-
-const {
+import {
 	suggestionRequest,
 	suggestionReset,
 	entityFormAddValToHiddenField,
 	entityFormSelectSuggestion
-} = actions;
-
+} from '../../actions';
+import { SuggestionsList, getSuggestionValue } from './SuggestionsHelper';
+import './style.css';
 
 class AutoComplete extends Component {
 	constructor(props) {

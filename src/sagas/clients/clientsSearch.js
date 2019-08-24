@@ -2,7 +2,7 @@ import { put, select, delay } from "redux-saga/effects";
 
 import { instance } from '../axios';
 import { getPageLimit } from '../selectors';
-import * as actions from '../../actions';
+import { clientsGetSuccess, pagiGetSuccess, } from '../../actions';
 
 function* clientsSearch(payload){
 	try {
@@ -15,9 +15,9 @@ function* clientsSearch(payload){
 		}
 		const { data } = yield instance('getClients', request);
 
-		yield put(actions.clientsGetSuccess(data.list));
+		yield put(clientsGetSuccess(data.list));
 		yield put(
-			actions.pagiGetSuccess({
+			pagiGetSuccess({
 				pageCount: data.other_count,
 				currentPage: data.page
 			})

@@ -2,7 +2,7 @@ import { put, select, delay } from "redux-saga/effects";
 
 import { instance } from '../axios';
 import { getPageLimit } from '../selectors';
-import * as actions from '../../actions';
+import { couriersGetSuccess, pagiGetSuccess } from '../../actions';
 
 function* couriersSearch(payload) {
 	try {
@@ -15,9 +15,9 @@ function* couriersSearch(payload) {
 		}
 		const { data } = yield instance('getCouriers', request);
 
-		yield put(actions.couriersGetSuccess(data.list));
+		yield put(couriersGetSuccess(data.list));
 		yield put(
-			actions.pagiGetSuccess({
+			pagiGetSuccess({
 				pageCount: data.other_count,
 				currentPage: data.page
 			})

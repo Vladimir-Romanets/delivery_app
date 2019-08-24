@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { clientsGetSuccess, pagiGetSuccess, notifierSetError} from '../../actions';
 import { getPageLimit, getCurrentPageNumber } from '../selectors';
 
 function* clientsGet({payload = {}}){
@@ -160,9 +160,9 @@ function* clientsGet({payload = {}}){
 		const { data } = yield instance('getClients', {...payload});
 		
 		if (data.status) {
-			yield put( actions.clientsGetSuccess(data.list) );
+			yield put( clientsGetSuccess(data.list) );
 			yield put(
-				actions.pagiGetSuccess({
+				pagiGetSuccess({
 					pageCount: data.other_count,
 					currentPage: data.page,
 					limit: payload.limit,
@@ -172,7 +172,7 @@ function* clientsGet({payload = {}}){
 			throw new Error( data.message || 'Ошибка получения данных' );
 		};
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	} finally {
 		yield put( hideLoading() );
 	};

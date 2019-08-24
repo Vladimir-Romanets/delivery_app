@@ -1,7 +1,7 @@
 import { put, select } from 'redux-saga/effects';
 import { getFormValues } from 'redux-form';
 import { instance } from '../axios';
-import * as actions from '../../actions';
+import { getShortStatisticSuccess, notifierSetError} from '../../actions';
 
 const defaultObj = {
 	servQuantity: 0,
@@ -46,7 +46,7 @@ function* getShortStatistic() {
 				]
 			};
 			const newData = calculation(data.all_sum_data);
-			yield put(actions.getShortStatisticSuccess(newData));
+			yield put(getShortStatisticSuccess(newData));
 		} else {
 			const { data } = yield instance('getFinalPinches', {
 				search,
@@ -56,10 +56,10 @@ function* getShortStatistic() {
 				limit: 100000,
 			});
 			const newData = calculation(data.all_sum_data);
-			yield put(actions.getShortStatisticSuccess(newData));
+			yield put(getShortStatisticSuccess(newData));
 		}
 	} catch (e) {
-		yield put( actions.notifierSetError({ message: e.message }) );
+		yield put( notifierSetError({ message: e.message }) );
 	};
 };
 
