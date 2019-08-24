@@ -1,7 +1,7 @@
 import { put, select } from 'redux-saga/effects';
 import { getFormValues } from 'redux-form';
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 
 const defaultObj = {
 	servQuantity: 0,

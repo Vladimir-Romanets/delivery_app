@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Autosuggest from 'react-autosuggest';
 
-import actions from '../../actions';
+import * as actions from '../../actions';
 import { SuggestionsList, getSuggestionValue } from './SuggestionsHelper';
 import './style.css';
 

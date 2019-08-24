@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import get from 'lodash/get';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 
 function* mtFetchEntryID({ payload }){
 	try {

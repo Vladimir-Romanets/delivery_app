@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import moment from 'moment';
 
 import { instance } from '../axios';
-import actions from '../../actions';
+import * as actions from '../../actions';
 
 function* mtEditableEntrySave({ payload: { currentServ, ...basic } }){
 	const { recepientDate, sendDate } = basic.deliveryAssets;
