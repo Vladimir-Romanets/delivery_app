@@ -1,5 +1,5 @@
 import React from 'react';
-import { Colgroup } from '../common/colgroup';
+import { Colgroup } from '../../components/common/colgroup';
 
 export const TableBody = ({ list, couriersEdit }) => {
 	if ( list === null ) {

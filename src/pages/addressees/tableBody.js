@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableModel } from './tableModel';
-import { Colgroup } from '../common/colgroup';
+import { Colgroup } from '../../components/common/colgroup';
 
 export const TableBody = ({ list, editingItem, addresseesEdit }) => {
 

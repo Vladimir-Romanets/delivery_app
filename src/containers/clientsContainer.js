@@ -10,7 +10,7 @@ import {
 	clientsDelete,
 	clientsReset
 } from '../actions';
-import { Clients } from '../components';
+import Clients from '../pages/clients';
 
 class ClientsContainer extends Component{
 	componentDidMount(){

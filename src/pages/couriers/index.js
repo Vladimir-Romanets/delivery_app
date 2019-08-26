@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import ScrollTopHOC from '../HOC/index';
+
+import ScrollTopHOC from '../../components/HOC';
+import Paginavi from '../../components/pagination';
 import { TableHeader } from './tableHeader';
 import { TableBody } from './tableBody';
 import { EditBlock } from './editBlock';
 import CouriersForm from './couriersForm';
-import Paginavi from '../pagination';
 import './style.css';
 
 class Couriers extends Component {

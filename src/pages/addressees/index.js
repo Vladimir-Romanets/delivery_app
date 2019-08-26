@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import ScrollTopHOC from '../HOC/index';
+
 import { TableBody } from './tableBody';
 import { TableHeader } from './tableHeader';
 import { EditBlock } from './editBlock';
 import AddresseesForm from './addresseesForm';
-import Paginavi from '../pagination';
+import ScrollTopHOC from '../../components/HOC';
+import Paginavi from '../../components/pagination';
 import './style.css';
 
 class Addressees extends Component {

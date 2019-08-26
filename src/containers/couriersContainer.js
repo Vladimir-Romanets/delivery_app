@@ -10,7 +10,7 @@ import {
 	couriersDelete,
 	couriersReset
 } from '../actions';
-import { Couriers } from '../components';
+import Couriers from '../pages/couriers';
 
 class CouriersContainer extends Component{
 	componentDidMount(){

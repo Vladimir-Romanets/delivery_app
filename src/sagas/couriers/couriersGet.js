@@ -5,6 +5,25 @@ import { instance } from '../axios';
 import { couriersGetSuccess, pagiGetSuccess, notifierSetError} from '../../actions';
 import { getPageLimit, getCurrentPageNumber } from '../selectors';
 
+const mockData = {
+	status: true,
+	list: [
+		{
+			car: "номер машини",
+			comments: "коментарий",
+			fio: "ФИО",
+			id: "1",
+			phone: "0953812827"
+		},
+		{
+			car: "цуацуацуа",
+			comments: "цуацуацуа",
+			fio: "цуацуа",
+			id: "2",
+			phone: "234234234"
+		}
+	]
+};
 function* couriersGet({ payload = {} }){
 	if (!payload.limit) {
 		payload.limit = yield select(getPageLimit);
@@ -15,28 +34,11 @@ function* couriersGet({ payload = {} }){
 	}
 
 	try {
-		// const data = {
-		// 	status: true,
-		// 	list: [
-		// 		{
-		// 			car: "номер машини",
-		// 			comments: "коментарий",
-		// 			fio: "ФИО",
-		// 			id: "1",
-		// 			phone: "0953812827"
-		// 		},
-		// 		{
-		// 			car: "цуацуацуа",
-		// 			comments: "цуацуацуа",
-		// 			fio: "цуацуа",
-		// 			id: "2",
-		// 			phone: "234234234"
-		// 		}
-		// 	]
-		// };
 		yield put( showLoading() );
 
-		const { data } = yield instance('getCouriers', {...payload});
+		const { data } = process.env.NODE_ENV === "development" ?
+			{ data: mockData } :
+			yield instance('getCouriers', {...payload});
 
 		if (data.status) {
 			yield put( couriersGetSuccess(data.list) );

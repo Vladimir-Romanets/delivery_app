@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import ScrollTopHOC from '../HOC/index';
+
 import ClientsForm from './clientsForm';
 import { TableHeader } from './tableHeader';
 import { TableBody } from './tableBody';
 import { EditBlock } from './editBlock';
-import Paginavi from '../pagination';
+import ScrollTopHOC from '../../components/HOC';
+import Paginavi from '../../components/pagination';
 import './style.css';
 
 class Clients extends Component {

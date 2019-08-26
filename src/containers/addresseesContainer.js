@@ -10,7 +10,7 @@ import {
 	addresseesEditReset,
 	addresseesReset
 } from '../actions';
-import { Addressees } from '../components';
+import Addressees from '../pages/addressees';
 
 class AddresseesContainer extends Component{
 

@@ -1,26 +1,27 @@
 import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
-import FieldTextArea from '../FieldTextArea'
-import { IcoADD } from '../icons';
+
+import FieldTextArea from '../../components/FieldTextArea'
+import { IcoADD } from '../../components/icons';
 import { validateField, required } from '../../utils/validate';
 import { phoneMask } from '../../utils/phoneMask';
 
-let AddresseesForm = props => {
+let CouriersForm = props => {
 	const {
 		handleSubmit,
 		parentClass = '',
-		noteField = true,
 		submitField = true,
-		mngBtn = true,
-		addresseesDelete = null,
-		addresseesEditReset = null
+		mngBtn = false,
+		couriersDelete = null,
+		couriersEditReset = null
 	} = props;
 
 	return(
 		<form className={`form ${parentClass}`}>
-			{ submitField ?
+			{
+				submitField ?
 				<div className='table__cell'>
-					<div className='ico__add' onClick={ handleSubmit } title='Сохранить адресат'>
+					<div className='ico__add' onClick={ handleSubmit } title='Добавить курьера'>
 						<IcoADD />
 					</div>
 				</div> : null
@@ -30,16 +31,16 @@ let AddresseesForm = props => {
 					component={ validateField }
 					validate={[ required ]}
 					type='text'
-					name='contact_name'
-					placeholder='Название'
+					name='fio'
+					placeholder='ФИО'
 				/>
 			</div>
 			<div className='table__cell'>
 				<Field
 					component='input'
 					type='text'
-					name='fio'
-					placeholder='ФИО'
+					name='car'
+					placeholder='Авто'
 				/>
 			</div>
 			<div className='table__cell'>
@@ -47,43 +48,27 @@ let AddresseesForm = props => {
 					component={ validateField }
 					validate={[ required ]}
 					type='text'
-					name='address'
-					placeholder='Адрес'
-				/>
-			</div>
-			<div className='table__cell'>
-				<Field
-					component='input'
-					type='text'
 					name='phone'
 					placeholder='Телефон'
 					format={ phoneMask }
 				/>
 			</div>
 			<div className='table__cell'>
-				<Field
-					component='input'
-					type='text'
-					name='email'
-					placeholder='E-mail'
-				/>
+				{
+					mngBtn ? <Field
+						className='flex-block'
+						name='comments'
+						component={FieldTextArea}
+					/> : <Field component='input' type='text' name='comment' />
+				}
 			</div>
-			{ noteField &&
-				<div className='table__cell'>
-				<Field
-					className='flex-block'
-					name='comments'
-					placeholder='Примечание'
-					component={FieldTextArea}
-				/>
-				</div>
-			}
-			{ mngBtn &&
+			{
+				mngBtn ?
 				<div className='mng__btn'>
 					<span className='btn --save' onClick={ handleSubmit }>Сохранить</span>
-					<span className='btn --delete' onClick={ addresseesDelete }>Удалить</span>
-					<span className='btn --cancel' onClick={ addresseesEditReset }>Отмена</span>
-				</div>
+					<span className='btn --delete' onClick={ couriersDelete }>Удалить</span>
+					<span className='btn --cancel' onClick={ couriersEditReset }>Отмена</span>
+				</div> : null
 			}
 		</form>
 )};
@@ -94,4 +79,4 @@ export default reduxForm({
 	form: ['text'],
 	onSubmitSuccess: submitSuccess,
 	enableReinitialize: true
-})( AddresseesForm );
+})( CouriersForm );
