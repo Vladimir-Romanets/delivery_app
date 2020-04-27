@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
-import FieldTextArea from '../../components/FieldTextArea'
-import { IcoADD } from '../../components/icons';
-import { validateField, required } from '../../utils/validate';
-import { phoneMask } from '../../utils/phoneMask';
+import FieldTextArea from '../../../components/FieldTextArea'
+import { IcoADD } from '../../../components/icons';
+import { validateField, required } from '../../../utils/validate';
+import { phoneMask } from '../../../utils/phoneMask';
 
 let ClientsForm = props => {
 	const {
@@ -16,23 +16,23 @@ let ClientsForm = props => {
 		clientsEditReset = null
 	} = props;
 
-	return(
+	return (
 		<form className={`form ${parentClass}`}>
 			{
 				submitField ?
-				<div className='table__cell'>
-					<div className='ico__add' onClick={ handleSubmit } title='Добавить клиента'>
-						<IcoADD />
-					</div>
-				</div> : null
+					<div className='table__cell'>
+						<div className='ico__add' onClick={handleSubmit} title='Добавить клиента'>
+							<IcoADD />
+						</div>
+					</div> : null
 			}
 			<div className='table__cell'>
 				<Field
-					component={ validateField }
+					component={validateField}
 					type='text'
 					name='clients_name'
 					placeholder='Наименование'
-					validate={[ required ]}
+					validate={[required]}
 				/>
 			</div>
 			<div className='table__cell'>
@@ -73,7 +73,7 @@ let ClientsForm = props => {
 					type='text'
 					name='phone'
 					placeholder='Телефон'
-					format={ phoneMask }
+					format={phoneMask}
 				/>
 			</div>
 			<div className='table__cell'>
@@ -86,30 +86,31 @@ let ClientsForm = props => {
 			</div>
 			{
 				noteField ?
-				<div className='table__cell'>
-					<Field
-						className='flex-block'
-						name='comments'
-						placeholder='Примечание'
-						component={FieldTextArea}
-					/>
-				</div> : null
+					<div className='table__cell'>
+						<Field
+							className='flex-block'
+							name='comments'
+							placeholder='Примечание'
+							component={FieldTextArea}
+						/>
+					</div> : null
 			}
 			{
 				mngBtn ?
-				<div className='mng__btn'>
-					<span className='btn --save' onClick={ handleSubmit }>Сохранить</span>
-					<span className='btn --delete' onClick={ clientsDelete }>Удалить</span>
-					<span className='btn --cancel' onClick={ clientsEditReset }>Отмена</span>
-				</div> : null
+					<div className='mng__btn'>
+						<span className='btn --save' onClick={handleSubmit}>Сохранить</span>
+						<span className='btn --delete' onClick={clientsDelete}>Удалить</span>
+						<span className='btn --cancel' onClick={clientsEditReset}>Отмена</span>
+					</div> : null
 			}
 		</form>
-)};
+	)
+};
 
-const submitSuccess = (result, dispatch, {form}) =>	dispatch( reset(form) );
+const submitSuccess = (result, dispatch, { form }) => dispatch(reset(form));
 
 export default reduxForm({
 	form: ['text'],
 	onSubmitSuccess: submitSuccess,
 	enableReinitialize: true
-})( ClientsForm );
+})(ClientsForm);

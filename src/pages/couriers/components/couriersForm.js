@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 
-import FieldTextArea from '../../components/FieldTextArea'
-import { IcoADD } from '../../components/icons';
-import { validateField, required } from '../../utils/validate';
-import { phoneMask } from '../../utils/phoneMask';
+import FieldTextArea from '../../../components/FieldTextArea'
+import { IcoADD } from '../../../components/icons';
+import { validateField, required } from '../../../utils/validate';
+import { phoneMask } from '../../../utils/phoneMask';
 
 let CouriersForm = props => {
 	const {
@@ -16,20 +16,20 @@ let CouriersForm = props => {
 		couriersEditReset = null
 	} = props;
 
-	return(
+	return (
 		<form className={`form ${parentClass}`}>
 			{
 				submitField ?
-				<div className='table__cell'>
-					<div className='ico__add' onClick={ handleSubmit } title='Добавить курьера'>
-						<IcoADD />
-					</div>
-				</div> : null
+					<div className='table__cell'>
+						<div className='ico__add' onClick={handleSubmit} title='Добавить курьера'>
+							<IcoADD />
+						</div>
+					</div> : null
 			}
 			<div className='table__cell'>
 				<Field
-					component={ validateField }
-					validate={[ required ]}
+					component={validateField}
+					validate={[required]}
 					type='text'
 					name='fio'
 					placeholder='ФИО'
@@ -45,12 +45,12 @@ let CouriersForm = props => {
 			</div>
 			<div className='table__cell'>
 				<Field
-					component={ validateField }
-					validate={[ required ]}
+					component={validateField}
+					validate={[required]}
 					type='text'
 					name='phone'
 					placeholder='Телефон'
-					format={ phoneMask }
+					format={phoneMask}
 				/>
 			</div>
 			<div className='table__cell'>
@@ -64,19 +64,20 @@ let CouriersForm = props => {
 			</div>
 			{
 				mngBtn ?
-				<div className='mng__btn'>
-					<span className='btn --save' onClick={ handleSubmit }>Сохранить</span>
-					<span className='btn --delete' onClick={ couriersDelete }>Удалить</span>
-					<span className='btn --cancel' onClick={ couriersEditReset }>Отмена</span>
-				</div> : null
+					<div className='mng__btn'>
+						<span className='btn --save' onClick={handleSubmit}>Сохранить</span>
+						<span className='btn --delete' onClick={couriersDelete}>Удалить</span>
+						<span className='btn --cancel' onClick={couriersEditReset}>Отмена</span>
+					</div> : null
 			}
 		</form>
-)};
+	)
+};
 
-const submitSuccess = (result, dispatch, {form}) =>  dispatch( reset(form) );
+const submitSuccess = (result, dispatch, { form }) => dispatch(reset(form));
 
 export default reduxForm({
 	form: ['text'],
 	onSubmitSuccess: submitSuccess,
 	enableReinitialize: true
-})( CouriersForm );
+})(CouriersForm);

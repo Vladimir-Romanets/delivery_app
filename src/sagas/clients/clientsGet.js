@@ -2,7 +2,7 @@ import { put, select } from 'redux-saga/effects';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { instance } from '../axios';
-import { clientsGetSuccess, pagiGetSuccess, notifierSetError} from '../../actions';
+import { clientsGetSuccess, pagiGetSuccess, notifierSetError } from '../../actions';
 import { getPageLimit, getCurrentPageNumber } from '../selectors';
 
 const mockData = {
@@ -11,7 +11,7 @@ const mockData = {
 	page: 1,
 	list: [
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			clients_name: "gr",
 			comments: "Коментарий1",
@@ -22,7 +22,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -33,7 +33,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -44,7 +44,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -55,7 +55,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -66,7 +66,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -77,7 +77,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -88,7 +88,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -99,7 +99,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -110,7 +110,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -121,7 +121,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -132,7 +132,7 @@ const mockData = {
 			phone: "0953812827"
 		},
 		{
-			adress: "Адресс",
+			adress: "Адрес",
 			client_inn: "243523534524234",
 			comments: "Коментарий2",
 			contact_face: "Контактное лицо2",
@@ -145,7 +145,7 @@ const mockData = {
 	]
 };
 
-function* clientsGet({payload = {}}){
+function* clientsGet({ payload = {} }) {
 	if (!payload.limit) {
 		payload.limit = yield select(getPageLimit);
 	}
@@ -155,15 +155,15 @@ function* clientsGet({payload = {}}){
 	}
 
 	try {
-		
-		yield put( showLoading() );
+
+		yield put(showLoading());
 
 		const { data } = process.env.NODE_ENV === "development" ?
 			{ data: mockData } :
-			yield instance('getClients', {...payload});
+			yield instance('getClients', { ...payload });
 
 		if (data.status) {
-			yield put( clientsGetSuccess(data.list) );
+			yield put(clientsGetSuccess(data.list));
 			yield put(
 				pagiGetSuccess({
 					pageCount: data.other_count,
@@ -172,12 +172,12 @@ function* clientsGet({payload = {}}){
 				})
 			);
 		} else {
-			throw new Error( data.message || 'Ошибка получения данных' );
+			throw new Error(data.message || 'Ошибка получения данных');
 		};
 	} catch (e) {
-		yield put( notifierSetError({ message: e.message }) );
+		yield put(notifierSetError({ message: e.message }));
 	} finally {
-		yield put( hideLoading() );
+		yield put(hideLoading());
 	};
 };
 

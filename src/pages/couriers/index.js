@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { TableHeader } from './components/tableHeader';
+import { TableBody } from './components/tableBody';
+import { EditBlock } from './editBlock';
+import CouriersForm from './components/couriersForm';
 import ScrollTopHOC from '../../components/HOC';
 import Paginavi from '../../components/pagination';
-import { TableHeader } from './tableHeader';
-import { TableBody } from './tableBody';
-import { EditBlock } from './editBlock';
-import CouriersForm from './couriersForm';
+import {
+	couriersGet,
+	couriersAdd,
+	couriersSearch,
+	couriersEdit,
+	couriersEditSave,
+	couriersEditReset,
+	couriersDelete,
+	couriersReset
+} from '../../actions';
 import './style.css';
 
 class Couriers extends Component {
+	componentDidMount() {
+		const { auth, list } = this.props;
+		if (auth && list === null) {
+			this.props.couriersGet({ page: 1 });
+		}
+	}
+
+	componentWillUnmount() {
+		this.props.couriersReset();
+	}
 
 	couriersAdd = (data) => this.props.couriersAdd(data)
 
@@ -18,19 +39,19 @@ class Couriers extends Component {
 
 	render() {
 		const { list, editingItem, ...rest } = this.props;
-		return(
+		return (
 			<div className='couriers'>
 				<div className='table'>
 					<TableHeader />
 					<CouriersForm
 						form='couriers'
 						parentClass='table__row'
-						onSubmit={ this.couriersAdd }
-						onChange={ this.couriersSearch }
+						onSubmit={this.couriersAdd}
+						onChange={this.couriersSearch}
 					/>
 					<TableBody
-						list={ list }
-						couriersEdit={ rest.couriersEdit }
+						list={list}
+						couriersEdit={rest.couriersEdit}
 					/>
 				</div>
 				{
@@ -44,10 +65,26 @@ class Couriers extends Component {
 							/>
 						</ScrollTopHOC> : null
 				}
-				<Paginavi handlerPageChange={this.handlerPageChange}/>
+				<Paginavi handlerPageChange={this.handlerPageChange} />
 			</div>
 		);
 	}
 };
 
-export default Couriers;
+const mapStateToProps = state => ({
+	auth: state.authorization.auth,
+	...state.couriers
+});
+
+const mapDispatchToProps = {
+	couriersGet,
+	couriersAdd,
+	couriersSearch,
+	couriersEdit,
+	couriersEditSave,
+	couriersEditReset,
+	couriersDelete,
+	couriersReset
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Couriers);

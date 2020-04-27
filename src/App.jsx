@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+
 import { AuthorizationContainer, NotifiersContainer } from './containers';
 import Content from './pages';
 import { checkToken } from './actions';
 
-class App extends Component{
-	componentDidMount(){
-		this.props.checkToken();
-	}
+const App = ({ auth, checkToken }) => {
+	useEffect(() => {
+		checkToken();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	render(){
-		const { auth } = this.props;
-		return (
-			<div className='container'>
-				<NotifiersContainer />
-				{auth ? <Content /> : <AuthorizationContainer /> }
-			</div>
-		)
-	}
+	return (
+		<div className='container'>
+			<NotifiersContainer />
+			{auth ? <Content /> : <AuthorizationContainer />}
+		</div>
+	)
 };
 
-const mapStateToProps = ({authorization,}) => ({
+const mapStateToProps = ({ authorization, }) => ({
 	auth: authorization.auth,
 });
 
